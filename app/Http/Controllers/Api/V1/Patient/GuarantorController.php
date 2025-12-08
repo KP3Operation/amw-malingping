@@ -40,7 +40,7 @@ class GuarantorController extends Controller
         $GuarantorID   = $request->guarantor_id ?? '';
         $guarantorName = $request->guarantor_name ?? '';
 
-        // Ambil data dari service
+        // get data from service
         $guarantorLists = $this->patientService->getGuarantorList(
             $GuarantorID,
             $guarantorName
@@ -51,7 +51,7 @@ class GuarantorController extends Controller
             ->flatten(1) // hilangkan 1 tingkat array
             ->filter(function ($item) {
                 $name = data_get($item, 'guarantorName');
-                return stripos($name, 'BPJS') === false;
+                return stripos($name, 'BPJS') === false && stripos($name, 'SKTM') === false;
             })
             ->sortBy('guarantorName')
             ->values()
