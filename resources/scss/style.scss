@@ -1226,3 +1226,16 @@ Jika mixin yang telah dibuat tidak mengganti style default komponen, maka coba p
 .wrap-select-option:focus {
   width: 100% !important;
 }
+
+// css for vue3barcode
+.barcode-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.barcode-wrapper svg {
+    width: 100% ;
+    height: auto !important;
+    max-height: 80px; /* bebas kamu atur */
+}
