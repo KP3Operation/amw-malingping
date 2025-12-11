@@ -4,7 +4,7 @@ import ConsulCard from "@patient/Components/ConsulCard/ConsulCard.vue";
 import DoctorWhite from "@resources/static/icons/doctor-white.svg";
 import UserFillWhite from "@resources/static/icons/users-fill-white.svg";
 import DoctorPatient from "@resources/static/images/doctor-2-pasien.png";
-import LogoWhite from "@resources/static/images/aviat-logo.png";
+// import LogoWhite from "@resources/static/images/aviat-logo.png";
 import { useAuthStore } from "@shared/+store/auth.store.js";
 import { useLayoutStore } from "@shared/+store/layout.store.js";
 import apiRequest from "@shared/utils/axios.js";
@@ -55,8 +55,8 @@ onMounted(() => {
             <img
                 src="@resources/static/images/company-logo.png"
                 alt="Logo Aviat"
-                width="100"
-                height="50"
+                style="max-height: 50px; height: auto; width: auto"
+                class="img-fluid"
             />
         </router-link>
         <p>
