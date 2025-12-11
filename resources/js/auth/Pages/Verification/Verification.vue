@@ -3,7 +3,7 @@ import { useAuthStore } from "@shared/+store/auth.store.js";
 import { useLayoutStore } from "@shared/+store/layout.store.js";
 import SubmitButton from "@shared/Components/SubmitButton/SubmitButton.vue";
 import axios from "@shared/utils/axios.js";
-import {getSecondsLeft, onlyNumberInput} from "@shared/utils/helpers.js";
+import { getSecondsLeft, onlyNumberInput } from "@shared/utils/helpers.js";
 import useVuelidate from "@vuelidate/core";
 import { helpers, required } from "@vuelidate/validators";
 import { mapActions, mapState } from "pinia";
@@ -199,6 +199,7 @@ export default {
     },
     mounted() {
         if (
+            !this.userData.phoneNumber ||
             this.userData.phoneNumber.toString().trim().length === 0 ||
             this.otpData.otpTimeout === 0
         ) {
