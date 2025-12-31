@@ -16,25 +16,6 @@ class GuarantorController extends Controller
         $this->patientService = $patientService;
     }
 
-    // public function index(Request $request)
-    // {
-    //     $GuarantorID = '';
-    //     $response = new stdClass();
-
-    //     // if ($request->has('guarantor_id')) {
-    //     //     $guarantorId = $request->guarantor_id;
-    //     // }
-
-    //     $guarantorLists = $this->patientService->getGuarantorList(
-    //         $GuarantorID ?? '',
-    //         $guarantorName ?? ''
-    //     );
-
-    //     $response->guarantor = $guarantorLists;
-
-    //     return response()->json($response);
-    // }
-
     public function index(Request $request)
     {
         $GuarantorID   = $request->guarantor_id ?? '';
@@ -46,12 +27,12 @@ class GuarantorController extends Controller
             $guarantorName
         );
 
-        // Pastikan tidak ada array bersarang
         $guarantorLists = collect($guarantorLists)
             ->flatten(1) // hilangkan 1 tingkat array
             ->filter(function ($item) {
-                $name = data_get($item, 'guarantorName');
-                return stripos($name, 'BPJS') === false && stripos($name, 'SKTM') === false;
+                $id = data_get($item, 'guarantorID');
+                // Tampilkan data berdasarkan guarantorID tertentu
+                return in_array($id, ['SELF', 'G-00007', 'G-00004', 'G-00003']);
             })
             ->sortBy('guarantorName')
             ->values()
